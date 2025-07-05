@@ -1,0 +1,45 @@
+
+    <div class="content" *ngIf="showAdminBoard" [ngClass]="{'sidebar-open': isSidebarOpen}">
+      <h1>Station List</h1>
+      <br>
+
+      <div class="search-bar">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search Station" (input)="searchStations()" />
+       </div>
+       <br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Station No. (From Route Start)</th>
+            <th>Station Name</th>
+            <th>Km (From route start)</th>
+            <th>Route Name</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let station of pagedStations">
+            <td>{{ station.stationNo }}</td>
+            <td>{{ station.station}}</td>
+            <td>{{ station.Km }}</td>
+            <td>{{ station.routeName }}</td>
+            <td>{{ station.latitude }}</td>
+            <td>{{ station.longitude }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteStation(station)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <button class="btn btn-primary" [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
+        &nbsp;&nbsp;&nbsp;
+        <span>{{currentPage}} / {{totalPages}}</span>
+        &nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary" [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+      </div>
+    </div>
+<app-sidebar></app-sidebar>

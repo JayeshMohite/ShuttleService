@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <style>
+    /* Add your CSS styles here */
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <div class="nav-title">
+       <a (click)="handleRedirection()">Shuttle.com</a>
+      </div>
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+
+    <div class="nav-links">
+      <a #homeLink (click)="handleRedirection()" routerLink="home" routerLinkActive="active" >Home</a>
+      <a routerLink="/helpchat" routerLinkActive="active">Support ?</a>
+      <a routerLink="/displaybuslocation" routerLinkActive="active">Bus Location</a>
+      <a routerLink="/admin" *ngIf="showAdminBoard" routerLinkActive="active">Admin Board</a>
+      <a routerLink="/mod" *ngIf="showModeratorBoard" routerLinkActive="active">Bus Conductor</a>
+      <a routerLink="/tickets" *ngIf="showUserBoard" routerLinkActive="active">Tickets</a>
+      <a routerLink="/bookings" *ngIf="showUserBoard" routerLinkActive="active">Bookings</a>
+      <a routerLink="/register" *ngIf="!isLoggedIn" routerLinkActive="active">Sign Up</a>
+      <a routerLink="/login" *ngIf="!isLoggedIn" routerLinkActive="active">Login</a>
+      <a routerLink="/wallet" *ngIf="showUserBoard" routerLinkActive="active">My Wallet</a>
+      <a routerLink="/profile" *ngIf="isLoggedIn" routerLinkActive="active">Profile</a>
+      <a routerLink="/locationtracker" *ngIf="showLocationBoard" routerLinkActive="active">Location Tracker</a>
+      <a routerLink="nav-link" *ngIf="isLoggedIn" (click)="logout()" routerLink="home" routerLinkActive="active">LogOut</a>
+
+    </div>
+  </div>
+
+
+    <div>
+      <router-outlet></router-outlet>
+
+    </div>
+</body>
+</html>

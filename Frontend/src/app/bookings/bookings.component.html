@@ -1,0 +1,110 @@
+
+<html>
+<body>
+
+  <div class="full-screen-background">
+    <div class="center-container">
+      <div class="sidecontainer">
+        <!-- Content for the side container -->
+        <h1>Book Your Seat</h1>
+        <h1>Now <span class="arrow">&#8594;</span></h1>
+      </div>
+  
+      <div class="container">
+    <h2>Select Route</h2>
+<select id="SelectRoute" for="SelectRoute" [(ngModel)]="selectedRoute" (ngModelChange)="onRouteChange()">
+  <option value="">Select Route</option>
+  <option *ngFor="let route of routes" [value]="route.routeName">{{ route.routeName }}</option>
+</select>
+
+<h2 *ngIf="selectedRoute !== ''">Select Bus Type</h2>
+<select id="SelectBusType" *ngIf="selectedRoute !== ''" [(ngModel)]="selectedBusType" (change)="filterBusesByType(selectedBusType)">
+  <option value="">Select Bus Type</option>
+  <option value="AC">AC</option>
+  <option value="NON-AC">NON-AC</option>
+</select>
+
+<h2 *ngIf="selectedBusType !== ''">Select Bus</h2>
+<select id="SelectStation" *ngIf="selectedBusType !== ''" [(ngModel)]="selectedBusID" (ngModelChange)="onBusChange()">
+  <option value="">Select Bus</option>
+  <option *ngFor="let bus of filteredBuses" [value]="bus.id">{{ bus.busName }}(Available Seats: {{ bus.totalseat }})</option>
+</select>
+
+
+<h2 *ngIf="selectedBusID !== ''">Select Pick-Up Point</h2>
+<select id="SelectedPickUp" for="SelectedPickUp" *ngIf="selectedBusID !== ''" [(ngModel)]="selectedPickUp" (change)="onPickUpChange()">
+  <option value="">Select Station</option>
+  <ng-container *ngFor="let station of filteredStations; let last = last">
+    <ng-container *ngIf="!last">
+      <option [value]="station.station">{{ station.station }}</option>
+    </ng-container>
+  </ng-container>
+</select>
+
+<h2 *ngIf="selectedPickUp !== ''">Select Drop Point</h2>
+<select *ngIf="selectedPickUp !== ''" id="SelectedDropPoint" for="SelectedDropPoint" [(ngModel)]="selectedDropPoint" (change)="calculateDistanceAndFare()">
+  <option value="">Select Station</option>
+  <option *ngFor="let station of filteredDropStations" [value]="station.station">{{ station.station }}</option>
+</select>
+<br>
+<br>
+
+
+<div>
+  <label for="totalTickets" *ngIf="selectedDropPoint !== ''">Buy Total Number of Tickets:</label>
+  <input id="totalTickets" type="number" [(ngModel)]="totalTickets" min="1" step="1" *ngIf="selectedDropPoint !== ''">
+</div>
+
+<button (click)="openTicketModal()" *ngIf="selectedDropPoint!== ''">Book Bus</button>
+
+
+<div class="modal-overlay" *ngIf="modalOpen">
+  <div class="modal-content">
+    <h2>Ticket Details</h2>
+    <div class="ticket-details">
+      <p>Total Distance: {{ totalDistance }} km</p>
+      <p>Total Tickets: {{ totalTickets }}</p>
+      <p>Selected Bus Type: {{ selectedBusType }}</p>
+      <p>Final Fare: {{ finalfare }}</p>
+      <p>Wallet Balance: {{walletBalance}} Rs</p>
+    </div>
+    <br>
+    
+    <div>
+      <button #payButton (click)="bookBus()" *ngIf="selectedBusType !== ''">Pay Online</button>
+      <br>
+      <br>
+      <button
+        #payViaWalletButton
+        (click)="openConfirmationModal()"
+        [disabled]="(walletBalance !== undefined && walletBalance < finalfare) || selectedBusType === ''"
+        class="add-money-button">
+        Pay via Wallet
+      </button>
+      <br>
+      <br>
+      <button (click)="closeModal()">Close</button>
+    </div>
+    </div>
+  </div>
+
+
+
+    </div>
+
+    </div>
+  </div>
+
+  <!-- The confirmation modal -->
+<div class="modal-overlay" *ngIf="confirmationModalOpen">
+  <div class="modal-content">
+    <h2>Confirm Payment</h2>
+    <p>Are you sure you want to pay via wallet?</p>
+    <br>
+    <button (click)="confirmPayment()">Confirm</button>
+    <br>
+    <button (click)="closeConfirmationModal()">Cancel</button>
+  </div>
+</div>
+</body>
+</html>

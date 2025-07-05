@@ -1,0 +1,32 @@
+
+    
+    <!-- Navbar -->
+
+    <div class="content"  *ngIf="showAdminBoard" [ngClass]="{'sidebar-open': isSidebarOpen}">
+      
+      <h1>Station Registration</h1>
+      <br>
+      <form #form="ngForm"(ngSubmit)="form.form.valid && onSubmit(form)" #f="ngForm"
+      novalidate>
+
+      <div class="form-group">
+        <div class="form-group">
+          <label for="station">Route Name:</label>
+          <input type="text" class="form-control" id="routeName" name="routeName" [(ngModel)]="routes" 
+          required
+          minlength="2"
+          #routeName="ngModel"
+          [ngClass]="{ 'is-invalid': form.submitted && routeName.errors }">
+          <div *ngIf="routeName.errors && form.submitted" class="invalid-feedback">
+           Route Name is required!
+          </div>
+        </div>
+      </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <app-sidebar></app-sidebar>
+</div>
+
+  

@@ -1,0 +1,138 @@
+/* Add ticket-like design */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  /* Ticket card */
+  .ticket {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 400px; /* Increase the width */
+    padding: 15px; /* Reduce the padding */
+    margin: 20px auto;
+    box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Ticket heading */
+  h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px; /* Reduce the margin */
+    font-size: 22px; /* Reduce the font-size */
+    text-transform: uppercase;
+  }
+  
+  /* Ticket details */
+  .ticket-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  /* Ticket property label */
+  .ticket-property {
+    font-weight: bold;
+  }
+  
+  /* Ticket property value */
+  .ticket-value {
+    flex-grow: 1;
+    text-align: right;
+  }
+  
+  /* QR code container */
+  .qr-code {
+    text-align: center;
+    margin-top: 25px; /* Reduce the margin */
+    position: relative;
+  }
+  
+  /* Verification status container */
+  .verification-verified {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    z-index: 2;
+  }
+  
+  .verified-icon {
+    color: green;
+    font-size: 180px;
+    font-weight: bold;
+  }
+  
+  /* QR code image */
+  .qr-image {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+  }
+  
+  /* Styles for the payment failed logo */
+  .ticket-details img[src="assets/paymentfail.jpg"] {
+    display: block;
+    margin: 25px auto; /* Reduce the margin */
+    max-width: 100%;
+  }
+  
+  /* Payment failed container */
+  .payment-failed {
+    justify-content: center;
+  }
+  
+  /* Payment status logo container */
+  .payment-status-logo {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Pagination container */
+  .ticket-pagination {
+    display: flex;
+    justify-content:center; 
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 35px;
+  }
+  
+  /* Pagination buttons */
+  .ticket-pagination button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* Disabled pagination buttons */
+  .ticket-pagination button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Separator line for failed tickets */
+  .ticket hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+  }
+  
+  /* Media query for landscape orientation on large page sizes */
+  @media screen and (min-width: 400px) and (max-width: 2000px) {
+    .ticket {
+      width: 1500px;
+      max-width: 95%;
+    }
+
+  }

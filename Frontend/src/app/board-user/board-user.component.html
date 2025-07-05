@@ -1,0 +1,168 @@
+<div *ngIf="showUserBoard">
+
+<h1>Bus List</h1>
+
+<table class="table">
+  <tr>
+    <th>Bus Name</th>
+    <th>Bus Number</th>
+    <th>Conductor Name</th>
+    <th>Conductor Number</th>
+    <th>Total Seats</th>
+    <th>Bus Type</th>
+    <th>Bus Route</th>
+  </tr>
+  <tr *ngFor="let bus of buses">
+    <td>{{ bus.busName }}</td>
+    <td>{{ bus.busNumber }}</td>
+    <td>{{ bus.conductorName }}</td>
+    <td>{{ bus.conductorNumber }}</td>
+    <td>{{ bus.totalseat }}</td>
+    <td>{{ bus.busType }}</td>
+    <td>{{ bus.busRoute }}</td>
+    <td>
+    </td>
+  </tr>
+</table>
+
+
+
+<h2>Select Route</h2>
+<select id="SelectRoute" for="SelectRoute" [(ngModel)]="selectedRoute" (ngModelChange)="onRouteChange()">
+  <option value="">Select Route</option>
+  <option *ngFor="let route of routes" [value]="route.routeName">{{ route.routeName }}</option>
+</select>
+<p *ngIf="selectedRoute">Selected Route: {{ selectedRoute }}</p>
+
+<h2 *ngIf="selectedRoute !== ''">Select Bus</h2>
+<select id="SelectStation" *ngIf="selectedRoute !== ''" [(ngModel)]="selectedBusID" (ngModelChange)="onBusChange()">
+  <option value="">Select Bus</option>
+  <option *ngFor="let bus of filteredBuses" [value]="bus.id">{{ bus.busName }}</option>
+</select>
+<p *ngIf="selectedBusID">Selected Bus: {{ selectedBusID }}</p>
+
+<ul id="Availableseat" *ngIf="selectedBusID !== ''">
+  <h3 *ngFor="let seats of filteredBuses">Available Seats: {{ seats.totalseat }}</h3>
+</ul>
+
+<h2 *ngIf="selectedBusID !== ''">Select Pick-Up Point</h2>
+<select id="SelectedPickUp" for="SelectedPickUp" *ngIf="selectedBusID !== ''" [(ngModel)]="selectedPickUp" (change)="calculateDistanceAndFare()">
+  <option value="">Select Station</option>
+  <option *ngFor="let station of filteredStations"  [value]="station.station">{{ station.station }}</option>
+</select>
+<p *ngIf="selectedPickUp">Selected Station: {{ selectedPickUp }}</p>
+
+
+<h2 *ngIf="selectedBusID !== ''">Select Drop Point</h2>
+<select id="SelectedDropPoint" for="SelectedDropPoint" *ngIf="selectedBusID !== ''" [(ngModel)]="selectedDropPoint" (change)="calculateDistanceAndFare()">
+  <option value="">Select Station</option>
+  <option *ngFor="let station of filteredStations" [value]="station.station">{{ station.station }}</option>
+</select>
+<p *ngIf="selectedDropPoint">Selected Station: {{ selectedDropPoint }}</p>
+<br>
+<br>
+
+<div>
+  <label *ngIf="selectedDropPoint !== ''">Bus Type:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="acBus" *ngIf="selectedDropPoint !== ''">AC</label>&nbsp;
+  <input id="acBus" type="radio" name="busType" value="AC" [(ngModel)]="selectedBusType" *ngIf="selectedDropPoint !== ''">&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="nonAcBus" *ngIf="selectedDropPoint !== ''">NON-AC</label>&nbsp;
+  <input id="nonAcBus" type="radio" name="busType" value="NON-AC" [(ngModel)]="selectedBusType" *ngIf="selectedDropPoint !== ''">
+</div>
+
+<div>
+  <label for="totalTickets" *ngIf="selectedBusType !== ''">Buy Total Number of Tickets:</label>
+  <input id="totalTickets" type="number" [(ngModel)]="totalTickets" min="1" step="1" *ngIf="selectedBusType !== ''">
+</div>
+
+
+<button (click)="bookBus()" *ngIf="selectedBusType !== ''">Book Bus</button>
+
+
+<div *ngFor="let ticket of tickets"  >
+  <div *ngIf="ticket.PaymentStatus === 'successful' || ticket.PaymentStatus === 'failed'" class="ticket">
+    <h2>Purchased Ticket</h2>
+  <div class="ticket-details">
+    <div class="ticket-property">User Id:</div>
+    <div class="ticket-value">{{ ticket.userId }}</div>
+  </div>
+  <div class="ticket-details">
+    <div class="ticket-property">Ticket ID:</div>
+    <div class="ticket-value">{{ ticket.TicketID }}</div>
+  </div>
+  <div class="ticket-details">
+    <div class="ticket-property">Timestamp:</div>
+    <div class="ticket-value">{{ ticket.Timestamp }}</div>
+  </div>
+  <div class="ticket-details">
+    <div class="ticket-property">Selected Route:</div>
+    <div class="ticket-value">{{ ticket.SelectedRoute }}</div>
+  </div>
+  <div class="ticket-details">
+    <div class="ticket-property">Selected Bus ID:</div>
+    <div class="ticket-value">{{ ticket.SelectedBusID }}</div>
+  </div>
+  <div class="ticket-details">
+    <div class="ticket-property">Selected Pick-Up Point:</div>
+    <div class="ticket-value">{{ ticket.SelectedPickUpPoint }}</div>
+  </div>
+  <div class="ticket-details">
+    <div class="ticket-property">Selected Drop Point:</div>
+    <div class="ticket-value">{{ ticket.SelectedDropPoint }}</div>
+  </div>
+  <div class="ticket-details">
+    <div class="ticket-property">Total seats:</div>
+    <div class="ticket-value">{{ ticket.TotalSeats }}</div>
+  </div>
+  <div class="ticket-details">
+    <div class="ticket-property">Total Distance:</div>
+    <div class="ticket-value">{{ ticket.TotalDistance }}</div>
+  </div>
+  <div class="ticket-details">
+    <div class="ticket-property">Bus Type:</div>
+    <div class="ticket-value">{{ ticket.busType }}</div>
+  </div>
+  <div class="ticket-details">
+    <div class="ticket-property">Fare:</div>
+    <div class="ticket-value">{{ ticket.Fare }}</div>
+  </div>
+  <div class="ticket-details">
+    <div class="ticket-property">PaymentStatus:</div>
+    <div class="ticket-value">{{ ticket.PaymentStatus }}</div>
+  </div>
+<div class="ticket-details">
+    <div class="ticket-property">Verification Status:</div>
+    <div class="ticket-value">
+      <span *ngIf="ticket.verificationStatus === 'Verified'" >
+        {{ ticket.verificationStatus }}
+      </span>
+      <span *ngIf="ticket.verificationStatus !== 'Verified'">
+        {{ ticket.verificationStatus }}
+      </span>
+    </div>
+  </div>
+  <div class="payment-status-logo">
+    <img *ngIf="ticket.PaymentStatus === 'failed'" src="assets/paymentfail.jpg" alt="Payment Failed">
+  </div>
+  <div *ngIf="ticket.PaymentStatus === 'successful'">
+  <div class="qr-code">
+    <div class="qr-image">
+      <img [src]="generateQRCode(ticket.TicketID, ticket.Timestamp, ticket.TotalSeats)" alt="QR Code">
+    </div>
+    <div *ngIf="ticket.verificationStatus === 'Verified'" class="verification-verified">
+      <span class="verified-icon">&#10003;</span>
+      <!-- {{ ticket.verificationStatus }} -->
+    </div>
+  </div>
+  
+  <hr>
+</div>
+</div>
+</div>
+
+<button (click)="startQrCodeScanner()">Start QR Code Scanner</button>
+<div id="qr-scanner">
+  <video id="qr-video" width="100%" height="auto"></video>
+</div>
+
+

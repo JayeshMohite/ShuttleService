@@ -1,0 +1,9 @@
+<div class="container">
+    <header class="jumbotron">
+      <p>{{ content }}</p>
+    </header>
+    <button (click)="startQrCodeScanner()">Start QR Code Scanner</button>
+    <div id="qr-scanner">
+      <video id="qr-video" width="100%" height="auto"></video>
+    </div>
+  </div>

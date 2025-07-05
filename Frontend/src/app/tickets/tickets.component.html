@@ -1,0 +1,70 @@
+
+  <div class="ticket-pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>{{ currentPage }} / {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+  <div class="ticket-container">
+<div *ngFor="let ticket of pagedTickets">
+<div *ngIf="showUserBoard">
+    <div *ngIf="ticket.PaymentStatus === 'successful' || ticket.PaymentStatus === 'Refunded' || ticket.PaymentStatus === 'failed'" class="ticket">
+      <h2>Purchased Ticket</h2>
+    <div class="ticket-details">
+      <div class="ticket-property">Ticket ID:</div>
+      <div class="ticket-value">{{ ticket.TicketID }}</div>
+    </div>
+    <div class="ticket-details">
+      <div class="ticket-property">Timestamp:</div>
+      <div class="ticket-value">{{ ticket.Timestamp }}</div>
+    </div>
+    <div class="ticket-details">
+      <div class="ticket-property">Selected Route:</div>
+      <div class="ticket-value">{{ ticket.SelectedRoute }}</div>
+    </div>
+    <div class="ticket-details">
+      <div class="ticket-property">Selected Pick-Up Point:</div>
+      <div class="ticket-value">{{ ticket.SelectedPickUpPoint }}</div>
+    </div>
+    <div class="ticket-details">
+      <div class="ticket-property">Selected Drop Point:</div>
+      <div class="ticket-value">{{ ticket.SelectedDropPoint }}</div>
+    </div>
+    <div class="ticket-details">
+      <div class="ticket-property">Total seats:</div>
+      <div class="ticket-value">{{ ticket.TotalSeats }}</div>
+    </div>
+    <div class="ticket-details">
+      <div class="ticket-property">Total Distance:</div>
+      <div class="ticket-value">{{ ticket.TotalDistance }} Km</div>
+    </div>
+    <div class="ticket-details">
+      <div class="ticket-property">Bus Type:</div>
+      <div class="ticket-value">{{ ticket.busType }}</div>
+    </div>
+    <div class="ticket-details">
+      <div class="ticket-property">Fare:</div>
+      <div class="ticket-value">{{ ticket.Fare }} Rs.</div>
+    </div>
+    <div class="ticket-details">
+      <div class="ticket-property">Payment Type:</div>
+      <div class="ticket-value">{{ ticket.PaymentType }} </div>
+    </div>
+    <div class="payment-status-logo">
+      <img *ngIf="ticket.PaymentStatus === 'failed'" src="assets/paymentfail.jpg" alt="Payment Failed">
+      <img *ngIf="ticket.PaymentStatus === 'Refunded'" src="assets/refund.png" alt="Payment Refunded">
+    </div>
+    <div *ngIf="ticket.PaymentStatus === 'successful'">
+    <div class="qr-code">
+      <div class="qr-image">
+        <img [src]="generateQRCode(ticket.TicketID, ticket.Timestamp, ticket.TotalSeats)" alt="QR Code">
+      </div>
+      <div *ngIf="ticket.verificationStatus === 'Verified'" class="verification-verified">
+        <span class="verified-icon">&#10003;</span>
+        <!-- {{ ticket.verificationStatus }} -->
+      </div>
+    </div>   
+  </div>
+  <hr>
+  </div>
+</div>
+</div>

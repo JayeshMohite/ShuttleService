@@ -1,0 +1,36 @@
+
+<div class="center-container">
+<h2>Ticket Tracking</h2>
+<form (submit)="trackTicket()">
+  <label for="ticketId">Enter Ticket ID:</label>
+  <input type="text" id="ticketId" name="ticketId" [(ngModel)]="ticketId" required>
+  <button type="submit">Track Ticket</button>
+</form>
+</div>
+
+
+<div class="modal-overlay" *ngIf="modalOpen">
+  <div class="modal-content">
+    <h2>Ticket Details</h2>
+    <div class="ticket-details">
+      <strong>Description:</strong> {{ selectedTicket?.issue_description }}<br>
+      <strong>Status:</strong>{{ selectedTicket?.status}}
+    </div>
+    <h3>Comments</h3>
+    <div class="comments-container">
+      <ul class="comments-list">
+        <li *ngFor="let comment of comments">
+          <p>{{ comment.comment }}</p>
+          <p>{{ comment.timestamp | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
+          <hr>
+        </li>
+      </ul>
+    </div>
+    <h3 *ngIf="selectedTicket?.status === 'Open'">Add Comment</h3>
+    <textarea *ngIf="selectedTicket?.status === 'Open'" [(ngModel)]="newComment" placeholder="Enter your comment"></textarea>
+    <br>
+    <button *ngIf="selectedTicket?.status === 'Open'" (click)="addComment()">Add Comment</button>
+    <br>
+    <button (click)="closeModal()">Close</button>
+  </div>
+</div>

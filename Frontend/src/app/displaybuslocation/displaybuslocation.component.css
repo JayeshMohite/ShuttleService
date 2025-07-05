@@ -1,0 +1,86 @@
+/* Add your custom CSS styles here */
+
+/* Style for the map container */
+#mapContainer {
+    width: 100%;
+    height: 400px; /* Adjust the height as needed */
+  }
+  
+  /* Style for the search input and button */
+  .search-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .search-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style for the bus location details */
+  .bus-details {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+  }
+  
+  /* Style for the map marker info window */
+  .marker-info {
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+/* Style for the map marker animation */
+.marker.move-animation {
+  
+  animation: markerMove 5s linear infinite;
+}
+
+/* Animation keyframes */
+@keyframes markerMove {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px); /* Adjust the distance as needed */
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Reduce the icon size */
+.marker img {
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+}
+
+/* Style for the route line */
+.route-line {
+  stroke: #FF0000; /* Line color */
+  stroke-opacity: 1;
+  stroke-width: 2; /* Line width */
+  fill: none;
+}

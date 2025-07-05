@@ -1,0 +1,90 @@
+ /* Add ticket-like design */
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+
+
+  .ticket {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 450px;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ticket p {
+    margin: 5px 0;
+  }
+  
+  .ticket hr {
+    border: none;
+    border-top: 1px dashed #ccc;
+    margin: 10px 0;
+  }
+  
+  h2 {
+    color: #333;
+    text-align: center;
+  }
+  
+  .ticket-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .ticket-property {
+    font-weight: bold;
+  }
+  
+  .ticket-value {
+    flex-grow: 1;
+    text-align: right;
+  }
+
+  .qr-code {
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .verification-verified {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    z-index: 2;
+  }
+  
+  .verified-icon {
+    color: green;
+    font-size: 180px;
+    font-weight: bold;
+  }
+  
+  .qr-image {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Styles for the payment failed logo */
+.ticket-details img[src="assets/paymentfail.jpg"] {
+  display: block;
+  margin: 30px auto;
+  max-width: 100%;
+}
+
+.payment-failed {
+  justify-content: center; /* To align items at the middle */
+}
+
+.payment-status-logo {
+  display: flex;
+  justify-content: center;
+}

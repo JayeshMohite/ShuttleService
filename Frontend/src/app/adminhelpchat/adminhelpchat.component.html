@@ -1,0 +1,55 @@
+<div class="content" *ngIf="showAdminBoard">
+    <h1>Help Ticket List</h1>
+    <br>
+  
+    <div class="search-bar">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Search Ticket" (input)="searchTickets()" />
+    </div>
+    <br>
+  
+    <div class="ticket-list">
+      <div *ngFor="let ticket of pagedHelpTickets" class="ticket-item"  (click)="openTicketModal(ticket)">
+        <h6><strong>Issue Type:</strong> {{ ticket.issue_type }}</h6>
+        <p><strong>Description:</strong> {{ ticket.issue_description }}</p>
+      </div>
+    </div>
+  
+    <div class="pagination">
+      <button class="btn btn-primary" [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
+      &nbsp;&nbsp;&nbsp;
+      <span>{{currentPage}} / {{totalPages}}</span>
+      &nbsp;&nbsp;&nbsp;
+      <button class="btn btn-primary" [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+    </div>
+  </div>
+
+
+  <div class="modal-overlay" *ngIf="modalOpen">
+    <div class="modal-content">
+      <h2>Ticket Details</h2>
+      <div class="ticket-details">
+        <strong>Issue Type:</strong> {{ selectedTicket?.issue_type }}<br>
+        <strong>Description:</strong> {{ selectedTicket?.issue_description }}<br>
+        <strong>Status: </strong>{{ selectedTicket?.status}}
+        <button *ngIf="selectedTicket?.status === 'Open'" (click)="updateTicketStatus()">Update Status</button>
+      </div>
+      <h3>Comments</h3>
+      <div class="comments-container">
+        <ul class="comments-list">
+          <li *ngFor="let comment of comments">
+            <p>{{ comment.comment }}</p>
+            <p>{{ comment.timestamp | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
+            <hr>
+          </li>
+        </ul>
+      </div>
+      <h3>Add Comment</h3>
+      <textarea [(ngModel)]="newComment" placeholder="Enter your comment"></textarea>
+      <br>
+      <button (click)="addComment()">Add Comment</button>
+      <br>
+      <button (click)="closeModal()">Close</button>
+    </div>
+  </div>
+
+<app-sidebar></app-sidebar>

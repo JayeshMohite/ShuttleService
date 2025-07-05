@@ -1,0 +1,65 @@
+
+    <div class="content"  *ngIf="showAdminBoard" [ngClass]="{'sidebar-open': isSidebarOpen}">
+      <div class="row mb-3">
+        <div class="col-xl-3 col-sm-6 py-2">
+            <div class="card bg-success text-white h-100">
+                <div class="card-body bg-success">
+                    <div class="rotate">
+                    </div>
+                    <h6 class="text-uppercase">Total Users</h6>
+                    <h1 class="display-4">{{totalUsers}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 py-2">
+            <div class="card text-white bg-danger h-100">
+                <div class="card-body bg-danger">
+                    <div class="rotate">
+                    </div>
+                    <h6 class="text-uppercase">Total Buses</h6>
+                    <h1 class="display-4">{{totalBus}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 py-2">
+            <div class="card text-white bg-info h-100">
+                <div class="card-body bg-info">
+                    <div class="rotate">
+                    </div>
+                    <h6 class="text-uppercase">Total Stations</h6>
+                    <h1 class="display-4">{{totalStation}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 py-2">
+            <div class="card text-white bg-warning h-100">
+                <div class="card-body">
+                    <div class="rotate">
+                    </div>
+                    <h6 class="text-uppercase">Total Routes</h6>
+                    <h1 class="display-4">{{totalRoute}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div class="pie-chart-container">
+        <h2>Total Tickets Status</h2>
+        <canvas id="pieChart" width="400" height="400"></canvas>
+        <div class="count-container">
+          <h2 class="count-label">Verified:</h2>
+          <h2 class="count-number">{{ ticketStats?.verifiedTickets }}</h2>
+        </div>
+        <div class="count-container">
+          <h2 class="count-label">Failed:</h2>
+          <h2 class="count-number">{{ ticketStats?.failedTickets }}</h2>
+        </div>
+        <div class="count-container">
+          <h2 class="count-label">Refunded:</h2>
+          <h2 class="count-number">{{ ticketStats?.refundedTickets }}</h2>
+        </div>
+      </div> 
+      
+<app-sidebar></app-sidebar>

@@ -1,0 +1,48 @@
+
+    
+        <div class="content" *ngIf="showAdminBoard" [ngClass]="{'sidebar-open': isSidebarOpen}">
+          <h1>Bus List</h1>
+          <br>
+          <div class="search-bar">
+            <input type="text" [(ngModel)]="searchTerm" placeholder="Search Bus" (input)="searchBuses()" />
+           </div>
+           <br>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Bus Name</th>
+                <th>Bus Number</th>
+                <th>Conductor Name</th>
+                <th>Conductor Number</th>
+                <th>Total Seats</th>
+                <th>Bus Type</th>
+                <th>Bus Route</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of pagedUsers">
+                <td>{{ user.busName }}</td>
+                <td>{{ user.busNumber }}</td>
+                <td>{{ user.conductorName }}</td>
+                <td>{{ user.conductorNumber }}</td>
+                <td>{{ user.totalseat }}</td>
+                <td>{{ user.busType }}</td>
+                <td>{{ user.busRoute }}</td>
+                <td>
+                  <button class="btn btn-primary" (click)="editUser(user)">Edit</button>
+                  &nbsp;&nbsp;
+                  <button class="btn btn-danger" (click)="deleteBus(user)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>     
+          <div class="pagination">
+            <button class="btn btn-primary" [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
+            &nbsp;&nbsp;&nbsp;
+            <span>{{ currentPage }} / {{ totalPages }}</span>
+            &nbsp;&nbsp;&nbsp;
+            <button class="btn btn-primary" [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+          </div>
+        </div>
+<app-sidebar></app-sidebar>

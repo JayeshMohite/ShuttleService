@@ -1,0 +1,85 @@
+/* Wallet Container Styles */
+.wallet-container {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.wallet-balance {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Add Money Section Styles */
+.add-money-container {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-money-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.add-money-label {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.add-money-input {
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  transition: border-color 0.3s;
+}
+
+.add-money-input:focus {
+  border-color: #007bff;
+}
+
+.add-money-button {
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-money-button:hover {
+  background-color: #0056b3;
+}
+
+/* Hover effect for balance display */
+.wallet-container:hover {
+  background-color: #e0e0e0;
+}
+
+/* Error Message Styles */
+.error-message {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Disabled Button Styles */
+.add-money-button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  /* You can add other styles as needed */
+}

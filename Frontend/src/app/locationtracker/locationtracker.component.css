@@ -1,0 +1,27 @@
+/* locationtracker.component.css */
+
+.location-container {
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px auto;
+    max-width: 400px;
+  }
+  
+  .location-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .location-details {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }

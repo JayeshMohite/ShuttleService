@@ -1,0 +1,118 @@
+
+
+    <div class="content" *ngIf="showAdminBoard" [ngClass]="{'sidebar-open': isSidebarOpen}">
+      <h1>User Registration</h1>
+      <br>
+
+      <div class="wrapper">
+    <form class="login"  
+    *ngIf="!isSuccessful"
+    name="form"
+    (ngSubmit)="f.form.valid && onSubmit()" 
+    #f="ngForm"
+    novalidate>
+    <p>Username </p>
+      <input type="text" placeholder="Username" autofocus  type="text"
+      class="form-control"
+      name="username"
+      [(ngModel)]="form.username"
+      required
+      #username="ngModel"
+      [ngClass]="{ 'is-invalid': f.submitted && username.errors }"/>
+      <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
+        Username is required!
+      </div>
+      <br>
+
+
+      <p>Email </p>
+      <input type="text" placeholder="Email" autofocus  type="text"
+      type="email"
+      class="form-control"
+      name="email"
+      [(ngModel)]="form.email"
+      required
+      email
+      #email="ngModel"
+      [ngClass]="{ 'is-invalid': f.submitted && email.errors }">
+      <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+        <div *ngIf="email.errors['required']">Email is required</div>
+        <div *ngIf="email.errors['email']">
+          Email must be a valid email address
+        </div>
+      </div>
+      <br>
+
+      <p>Password </p>
+      <input type="password" placeholder="Password"
+        type="password"
+        class="form-control"
+        name="password"
+        [(ngModel)]="form.password"
+        required
+        minlength="6"
+        #password="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && password.errors }"/>
+        <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+          <div *ngIf="password.errors['required']">Password is required</div>
+          <div *ngIf="password.errors['minlength']">
+            Password must be at least 6 characters
+          </div>
+        </div>
+        <br>
+
+        <p>Contact Number</p>
+        <input
+        type="text"
+        placeholder="Contact Number"
+        autofocus
+        type="text"
+        class="form-control"
+        name="Contact"
+        [(ngModel)]="form.phone"
+        required 
+        #phone="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && phone.errors }"/>
+      <i class="fa fa-contact"></i>
+      <div *ngIf="phone.errors && f.submitted" class="invalid-feedback">
+        Contact Number is required and must be a valid phone number!
+      </div>
+      <br>
+      <br>
+
+        <div class="form-group">
+          <label>Select Role(s):</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="user-role-user" value="user" [checked]="form.roles.includes('user')" (change)="toggleRoleSelection('user')">
+            <label class="form-check-label" for="user-role-user">User</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="user-role-admin" value="admin" [checked]="form.roles.includes('admin')" (change)="toggleRoleSelection('admin')">
+            <label class="form-check-label" for="user-role-admin">Admin</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="user-role-moderator" value="moderator" [checked]="form.roles.includes('moderator')" (change)="toggleRoleSelection('moderator')">
+            <label class="form-check-label" for="user-role-moderator">Conductor</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="user-role-locator" value="locator" [checked]="form.roles.includes('locator')" (change)="toggleRoleSelection('locator')">
+            <label class="form-check-label" for="user-role-locator">Locator</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="user-role-superadmin" value="superadmin" [checked]="form.roles.includes('superadmin')" (change)="toggleRoleSelection('superadmin')">
+            <label class="form-check-label" for="user-role-superadmin">Superadmin</label>
+          </div>
+        </div>
+      <button class="btn btn-primary">Register</button>
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+      
+    </div>
+</div>
+</div>
+<app-sidebar></app-sidebar>

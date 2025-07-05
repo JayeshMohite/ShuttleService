@@ -1,0 +1,111 @@
+
+
+    <div class="content" *ngIf="showAdminBoard" [ngClass]="{'sidebar-open': isSidebarOpen}">
+      <h1>Bus Registration</h1>
+      <br>
+
+  <form #form="ngForm"(ngSubmit)="form.form.valid && onSubmit(form)"
+  novalidate>
+    <div class="form-group">
+      <label for="busName">Bus Name:</label>
+      <input type="text" class="form-control" id="busName" name="busName" [(ngModel)]="busName" 
+      required
+      minlength="2"
+      #busname="ngModel"
+      [ngClass]="{ 'is-invalid': form.submitted && busname.errors }">
+      <div *ngIf="busname.errors && form.submitted" class="invalid-feedback">
+        Bus Name is required!
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="busNumber">Bus Number:</label>
+      <input type="text" class="form-control" id="busNumber" name="busNumber" [(ngModel)]="busNumber" 
+      required
+      minlength="2"
+      #busnumber="ngModel"
+      [ngClass]="{ 'is-invalid': form.submitted && busnumber.errors }">
+      <div *ngIf="busnumber.errors && form.submitted" class="invalid-feedback">
+        Bus Number is required!
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="conductorName">Conductor Name:</label>
+      <input type="text" class="form-control" id="conductorName" name="conductorName" [(ngModel)]="conductorName" 
+      required
+      minlength="2"
+      #conname="ngModel"
+      [ngClass]="{ 'is-invalid': form.submitted && conname.errors }">
+      <div *ngIf="conname.errors && form.submitted" class="invalid-feedback">
+        Conductor Name is required!
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="conductorNumber">Conductor Number:</label>
+      <input type="text" class="form-control" id="conductorNumber" name="conductorNumber" [(ngModel)]="conductorNumber" 
+      required
+      minlength="2"
+      #connumber="ngModel"
+      [ngClass]="{ 'is-invalid': form.submitted && connumber.errors }">
+      <div *ngIf="connumber.errors && form.submitted" class="invalid-feedback">
+        Conductor Number is required!
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="totalSeat">Total Number of Seats:</label>
+      <input type="text" class="form-control" id="totalSeat" name="totalSeat" [(ngModel)]="totalseat" 
+      required
+      minlength="2"
+      #totalSeats="ngModel"
+      [ngClass]="{ 'is-invalid': form.submitted && totalSeats.errors }">
+      <div *ngIf="totalSeats.errors && form.submitted" class="invalid-feedback">
+        Total Seats required!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Bus Type:</label>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="acType" name="busType" value="AC" [(ngModel)]="busType" required
+          #bustype="ngModel">
+        <label class="form-check-label" for="acType">AC</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="nonacType" name="busType" value="NON-AC" [(ngModel)]="busType" required
+          #bustype="ngModel">
+        <label class="form-check-label" for="nonacType">NON-AC</label>
+      </div>
+      <div *ngIf="bustype.errors && form.submitted" class="invalid-feedback">
+        Bus Type is required!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="available">Available:</label>
+      <select class="form-control" id="available" name="available" [(ngModel)]="available">
+        <option value="true">True</option>
+        <option value="false">False</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="busRoute">Bus Route:</label>
+      <select class="form-control" id="busRoute" name="busRoute" [(ngModel)]="busRoute" required
+      dropdown=""
+      #dropdown="ngModel"
+      [ngClass]="{ 'is-invalid': form.submitted && dropdown.errors }">
+      <div *ngIf="dropdown.errors && form.submitted" class="invalid-feedback">
+        DropDown is required!
+      </div>
+        <option value="">Select a route</option>
+        <option *ngFor="let route of routes" [value]="route.routeName">{{ route.routeName }}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+  
+<app-sidebar></app-sidebar>

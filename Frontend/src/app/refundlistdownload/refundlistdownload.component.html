@@ -1,0 +1,32 @@
+<div class="content" [ngClass]="{'sidebar-open': isSidebarOpen}">
+  <h2>Download Refund List</h2>
+
+  <div *ngIf="isSuccessful; else downloadSection">
+    <div class="alert alert-success" role="alert">
+      Refund list downloaded successfully.
+    </div>
+  </div>
+
+  <ng-template #downloadSection>
+    <div *ngIf="isSignUpFailed" class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>
+
+    <div class="form-group">
+      <label for="selectedDate">Select Date:</label>
+      <input type="date" class="form-control" id="selectedDate" [(ngModel)]="selectedDate" name="selectedDate">
+    </div>
+
+    <button class="btn btn-primary" (click)="downloadRefundList()">Download</button>
+  </ng-template>
+  <br>
+  <br>
+  <div>
+    <h2>Upload Excel File For Refund  </h2>
+    <form (submit)="uploadFile($event)">
+      <input type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" />
+      <button type="submit">Upload</button>
+    </form>
+  </div>
+</div>
+<app-sidebar></app-sidebar>

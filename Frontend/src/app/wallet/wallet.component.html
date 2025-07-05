@@ -1,0 +1,11 @@
+<div class="wallet-container">
+  <h2 class="wallet-balance">Wallet Balance</h2>
+  <p>Balance: {{ walletBalance }} Rs</p>
+</div>
+
+<div class="add-money-container">
+  <h2 class="add-money-title">Add Money to Wallet</h2>
+  <label class="add-money-label" for="amount">Amount (INR)</label>
+  <input class="add-money-input" type="number" id="amount" [(ngModel)]="amountToAdd" min="0" />
+  <button class="add-money-button" (click)="addMoneyToWallet()" [disabled]="amountToAdd ? amountToAdd < 1 : true">Add Money</button>
+</div>

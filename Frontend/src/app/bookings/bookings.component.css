@@ -1,0 +1,183 @@
+
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 400px; /* Adjust the width as needed */
+}
+
+.modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  /* Only include the essential styles for now, and gradually add more if needed */
+}
+
+.modal-content p {
+  color: black; /* You can choose the color that works best for your design */
+}
+
+.modal-content h2 {
+  color: black; /* You can choose the color that works best for your design */
+}
+
+
+/* Style for the center container */
+.center-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+
+
+/* Style for the container of the entire form */
+.container {
+  flex: 1;
+  max-width: 50%; /* Reduce the max-width to 25% to give more space to sidecontainer */
+  margin: 0 10px; /* Add space horizontally between containers */
+  border: 0px solid #ccc;
+  border-radius: 2px;
+  padding: 40px;
+}
+
+.sidecontainer {
+  flex: 1; /* Change flex value to 1 to occupy equal space as container */
+  max-width: 25%; /* Reduce the max-width to 25% to make it equal to container */
+  margin: 0px 10px; /* Add space horizontally between containers */
+  padding: 40px;
+  border: 0px solid #ccc;
+  border-radius: 5px;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+}
+  /* Style for the heading */
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the select elements */
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Style for the paragraph element */
+  p {
+    margin: 5px 0;
+  }
+  
+  /* Style for the radio buttons and labels */
+  label {
+    margin-right: 10px;
+  }
+  
+  /* Style for the input element */
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  /* Style for the number input */
+  input[type="number"] {
+    width: 100px;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Style for the button */
+  button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Style for the button on hover */
+  button:hover {
+    background-color: #0056b3;
+  }
+
+.center-container,
+.container,
+.sidecontainer {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+.full-screen-background {
+  position:relative;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  background-image: url('src/assets/bookingbackground.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.not-selected {
+  border: 2px solid red; /* For example, you can use a red border to highlight */
+  background-color: #fff; /* You can also use a different background color */
+}
+
+button:active + * .not-selected {
+  border: 2px solid red; /* For example, you can use a red border to highlight */
+  background-color: #fff; /* You can also use a different background color */
+}
+
+  /* Add your button styling for the disabled state here */
+  .add-money-button:disabled {
+    background-color: #ccc; /* Change to your desired background color */
+    color: #666; /* Change to your desired text color */
+    cursor: not-allowed; /* Change cursor to not-allowed */
+    /* You can add other styles as needed */
+  }

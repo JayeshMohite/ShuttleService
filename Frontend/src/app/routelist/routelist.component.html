@@ -1,0 +1,35 @@
+
+    <div class="content" *ngIf="showAdminBoard" [ngClass]="{'sidebar-open': isSidebarOpen}">
+      <h1>Route List</h1>
+      <br>
+
+      <div class="search-bar">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search Route" (input)="searchTickets()" />
+       </div>
+       <br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Route Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let station of pagedRoutes">
+            <td>{{ station.routeName }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteRoute(station)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <button class="btn btn-primary" [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
+        &nbsp;&nbsp;&nbsp;
+        <span>{{currentPage}} / {{totalPages}}</span>
+        &nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary" [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+      </div>
+    </div>
+<app-sidebar></app-sidebar>

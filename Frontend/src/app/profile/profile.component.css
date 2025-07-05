@@ -1,0 +1,144 @@
+/* Styling for the container */
+.container {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    height: 645px; /* Set your desired height value */
+  }
+  
+ 
+  /* Styling for the header */
+  .container header {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  /* Styling for the username */
+  .container header h3 {
+    font-size: 20px;
+  }
+  
+  /* Styling for the strong elements (labels) */
+  .container strong {
+    font-weight: bold;
+  }
+  
+  /* Styling for the contact information */
+  .container p {
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for the Change Password button */
+  .container button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .container button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styling for the 'Please login' message */
+  ng-template[loggedOut] {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff0000;
+    margin: 20px auto;
+  }
+
+  /* Styling for the profile image */
+.profile-image {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  margin-left: 55px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #007bff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  color: #ffffff;
+  text-transform: uppercase;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for the initials */
+.initials {
+  display: inline-block;
+  line-height: 1;
+}
+
+.profile-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+
+
+.chart-container {
+    /* Adjust the chart container width as needed */
+    flex: 1;
+    max-width: 58%; 
+    margin-right: 50px;
+    margin-top: 10px;
+    margin-left: 20px;
+    /* Add any other styling for the chart container */
+    /* Example: padding, margin, etc. */
+}
+
+/* Styling for the card container */
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    
+    padding: 0 20px;
+  }
+  
+  /* Styling for individual cards */
+  .card {
+    flex: 0 0 calc(50% - 20px); /* Adjust card width as needed, here each card takes 50% width minus the margin */
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Additional styling for the cards' content */
+  .card-body {
+    height: 100%;
+    position: relative;
+    
+  }
+  
+  .card-body .rotate {
+    z-index: 8;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .card-body .rotate i {
+    color: rgba(20, 20, 20, 0.15);
+    position: absolute;
+    right: -10px;
+    bottom: 0;
+    display: block;
+    transform: rotate(-44deg);
+    
+  }

@@ -1,0 +1,10 @@
+<div class="location-container">
+    <h2>Your Current Location</h2>
+    <p class="location-details">Latitude: {{ latitude }}</p>
+    <p class="location-details">Longitude: {{ longitude }}</p>
+    <p class="location-details">Bus Name: {{ username }}</p>
+  
+    <div *ngIf="locationError" class="error-message">
+      {{ locationError }}
+    </div>
+  </div>

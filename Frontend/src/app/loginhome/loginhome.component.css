@@ -1,0 +1,50 @@
+.fullscreen-video {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .travel-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.892);
+    padding: 40px;
+    border-radius: 5px;
+    max-width: 90%; /* Adjust the width to your liking */
+    width: 800px; /* Adjust the width to your liking */
+  }
+  
+  .travel-text {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+  }
+
+
+  /* Styles for the "Book Now" button */
+.travel-block button {
+    padding: 10px 20px;
+    background-color: mediumturquoise;;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition for the hover effect */
+  }
+  
+  .travel-block button:hover {
+    background-color: #0056b3; /* New background color on hover */
+  }

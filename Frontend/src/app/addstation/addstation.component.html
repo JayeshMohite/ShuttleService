@@ -1,0 +1,77 @@
+
+  
+
+    <div class="content" *ngIf="showAdminBoard" [ngClass]="{'sidebar-open': isSidebarOpen}">
+        <h1>Station Registration</h1>
+        <br>
+        <form #form="ngForm"(ngSubmit)="form.form.valid && onSubmit(form)" #f="ngForm"
+        novalidate>
+        <div class="form-group">
+          <label for="busRoute">Bus Route:</label>
+          <select class="form-control" id="busRoute" name="busRoute" [(ngModel)]="busRoute" required
+          dropdown=""
+          #dropdown="ngModel"
+          [ngClass]="{ 'is-invalid': form.submitted && dropdown.errors }">
+          <div *ngIf="dropdown.errors && form.submitted" class="invalid-feedback">
+            DropDown is required!
+          </div>
+            <option value="">Select a route</option>
+            <option *ngFor="let route of routes" [value]="route.routeName">{{ route.routeName }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group">
+            <label for="station">Station Name:</label>
+            <input type="text" class="form-control" id="station" name="station" [(ngModel)]="stationname" 
+            required
+            minlength="2"
+            #station="ngModel"
+            [ngClass]="{ 'is-invalid': form.submitted && station.errors }">
+            <div *ngIf="station.errors && form.submitted" class="invalid-feedback">
+              Station Name is required!
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-group">
+            <label for="Km">Km (From start of route):</label>
+            <input type="text" class="form-control" id="Km" name="Km" [(ngModel)]="totalKm" 
+            required
+            minlength="1"
+            #Km="ngModel"
+            [ngClass]="{ 'is-invalid': form.submitted && station.errors }">
+            <div *ngIf="station.errors && form.submitted" class="invalid-feedback">
+              Station Name is required!
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="stationNo">Station No.:</label>
+          <input type="text" class="form-control" id="stationNo" name="stationNo" [(ngModel)]="stationNo" 
+            required
+            minlength="1"
+            #stationNoModel="ngModel"
+            [ngClass]="{ 'is-invalid': form.submitted && stationNoModel.errors }">
+          <div *ngIf="stationNoModel.errors && form.submitted" class="invalid-feedback">
+            Station No. is required!
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="latitude">Latitude:</label>
+          <input type="text" class="form-control" id="latitude" name="latitude" [(ngModel)]="latitude">
+        </div>
+        
+        <div class="form-group">
+          <label for="longitude">Longitude:</label>
+          <input type="text" class="form-control" id="longitude" name="longitude" [(ngModel)]="longitude">
+        </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+  <app-sidebar></app-sidebar>

@@ -1,0 +1,145 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="sidebar.component.css" />
+    <!-- Boxicons CSS -->
+    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <nav class="sidebar" *ngIf="showAdminBoard"  [ngClass]="{'active': !isSidebarOpen}">
+      <div class="menu_container">
+        <div class="menu_items">
+          <ul class="menu_item">
+            <div class="menu_title flex">
+              <span class="title">Dashboard</span>
+              <span class="line"></span>
+            </div>
+            <li class="item">
+              <a href="/admin" routerLink="/admin" class="link flex">
+                <i class="bx bx-home-alt"></i>
+                <span>Overview</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="menu_item" *ngIf="showSuperadminBoard">
+            <div class="menu_title flex">
+              <span class="title">Users</span>
+              <span class="line"></span>
+            </div>
+            <li class="item">
+              <a routerLink="/userlist" class="link flex">
+                <i class="bx bxs-magic-wand"></i>
+                <span>User List</span>
+              </a>
+            </li>
+            <li class="item">
+              <a routerLink="/adduser" class="link flex">
+                <i class="bx bx-folder"></i>
+                <span>Add User</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="menu_item">
+            <div class="menu_title flex">
+              <span class="title">Bus</span>
+              <span class="line"></span>
+            </div>
+            <li class="item">
+              <a href="/Buslist" routerLink="/Buslist" class="link flex">
+                <i class="bx bx-flag"></i>
+                <span>Bus List</span>
+              </a>
+            </li>
+            <li class="item">
+              <a href="/NewBus" routerLink="/NewBus" class="link flex">
+                <i class="bx bx-award"></i>
+                <span>Add / Edit Bus</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="menu_item">
+            <div class="menu_title flex">
+              <span class="title">Stations</span>
+              <span class="line"></span>
+            </div>
+            <li class="item">
+              <a routerLink="/stationlist" class="link flex">
+                <i class="bx bxs-magic-wand"></i>
+                <span>Station List</span>
+              </a>
+            </li>
+            <li class="item">
+              <a routerLink="/addstation" class="link flex">
+                <i class="bx bx-folder"></i>
+                <span>Add Station</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="menu_item">
+            <div class="menu_title flex">
+              <span class="title">Routes</span>
+              <span class="line"></span>
+            </div>
+            <li class="item">
+              <a routerLink="/routelist" class="link flex">
+                <i class="bx bxs-magic-wand"></i>
+                <span>Route List</span>
+              </a>
+            </li>
+            <li class="item">
+              <a routerLink="/addroute" class="link flex">
+                <i class="bx bx-folder"></i>
+                <span>Add Route</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="menu_item" *ngIf="showSuperadminBoard">
+            <div class="menu_title flex">
+              <span class="title">Transactions</span>
+              <span class="line"></span>
+            </div>
+            <li class="item">
+              <a href="/transactionlist" routerLink="/transactionlist" class="link flex">
+                <i class="bx bx-flag"></i>
+                <span>Transaction List</span>
+              </a>
+            </li>
+            <li class="item">
+                <a href="/refundlistdownload" routerLink="/refundlistdownload" class="link flex">
+                  <i class="bx bx-flag"></i>
+                  <span>Transaction Refund</span>
+                </a>
+              </li>
+          </ul>
+          <ul class="menu_item">
+            <div class="menu_title flex">
+              <span class="title">Support</span>
+              <span class="line"></span>
+            </div>
+            <li class="item">
+              <a href="/adminhelpchat" routerLink="/adminhelpchat" class="link flex">
+                <i class="bx bx-flag"></i>
+                <span>Help Chat</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar_profile flex">
+          <div class="data_text">
+            <span class="name">{{currentUser.username}}</span>
+            <br>
+            <span class="email">{{ currentUser.email }}</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Navbar -->
+
+     
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<div class="profile-container">
+<div class="container" *ngIf="currentUser; else loggedOut">
+    <header >
+      <div class="profile-image">
+        <span class="initials">{{ getInitials(currentUser.username) }}</span>
+      </div>
+      <h3>
+        <strong>{{ currentUser.username }}</strong> Profile
+      </h3>
+    </header>
+    <p>
+      <strong>Email-ID :</strong>
+      {{ currentUser.email }}
+    </p>
+    <p>
+      <strong>Contact Number :</strong>
+      {{ currentUser.phone }}
+    </p>
+    <br>
+    <button routerLink="/changepassword">Change Password</button>
+</div>
+
+<div class="chart-container">
+  <h2>Tickets This Year</h2>
+  <canvas id="myChart"></canvas>
+  <div class="row mb-3">
+  <div class="col-xl-3 col-sm-6 py-2">
+    <div class="card bg-success text-white h-100">
+        <div class="card-body bg-success">
+            <div class="rotate">
+            </div>
+            <h6 class="text-uppercase">Total Travells</h6>
+            <h2 class="display-4">{{totalTickets}}</h2>
+        </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-sm-6 py-2">
+    <div class="card text-white bg-danger h-100">
+        <div class="card-body bg-danger">
+            <div class="rotate">
+            </div>
+            <h6 class="text-uppercase">Total Amt (in INR)</h6>
+            <h6 class="display-4"> {{totalFare}} </h6>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+</div>
+
+  <ng-template #loggedOut>
+    Please login.
+  </ng-template>

@@ -1,0 +1,16 @@
+
+  <div class="container">
+  <div class="search-container">
+    <input class="search-input" type="text" [(ngModel)]="searchedBus" placeholder="Enter bus name">
+    <button class="search-button" (click)="searchBusLocation()">Search</button>
+  </div>
+
+  <div  #mapContainer id="mapContainer"></div> <!-- This is the container for the Google Map -->
+
+  <div class="bus-details" *ngIf="searchedBusLocation">
+    <h2>Bus Details</h2>
+    <p><strong>Bus Name:</strong> {{ searchedBusLocation.username }}</p>
+  </div>
+
+  <!-- Add any other HTML elements or components you need -->
+</div>
