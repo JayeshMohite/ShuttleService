@@ -90,7 +90,7 @@ export class DisplaybuslocationComponent implements OnInit {
 }
   loadGoogleMapsScript(): void {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAv8oU7Ef4R_1jPJiswzCCBSLWqxtSHBm8`; // Replace with your actual API key
+    script.src = `https://maps.googleapis.com/maps/api/js?key=8`; // Replace with your actual API key
     script.onload = () => this.initMapAndLoadBusLocations();
     document.body.appendChild(script);
     
